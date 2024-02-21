@@ -1,11 +1,12 @@
-import Footer from "@/app/_components/footer";
-import { CMS_NAME, HOME_OG_IMAGE_URL } from "@/lib/constants";
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import Footer from '@/components/footer';
+import {CMS_NAME, HOME_OG_IMAGE_URL} from '@/lib/constants';
+import type {Metadata} from 'next';
+import {Inter} from 'next/font/google';
 
-import "./globals.css";
+import '../index.css';
+import {Theme} from '@radix-ui/themes';
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({subsets: ['latin']});
 
 export const metadata: Metadata = {
   title: `Next.js Blog Example with ${CMS_NAME}`,
@@ -56,7 +57,9 @@ export default function RootLayout({
         <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
       </head>
       <body className={inter.className}>
-        <div className="min-h-screen">{children}</div>
+        <Theme>
+          <div className="min-h-screen">{children}</div>
+        </Theme>
         <Footer />
       </body>
     </html>
