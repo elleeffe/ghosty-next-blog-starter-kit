@@ -3,6 +3,8 @@ type Author = {
   picture: string;
 };
 
+type Category = 'news';
+
 type Post = {
   slug: string;
   title: string;
@@ -13,4 +15,5 @@ type Post = {
   ogImage: string;
   content: string;
   preview?: boolean;
+  category: Category;
 };

@@ -2,9 +2,9 @@ import Container from '@/components/container';
 import {HeroPost} from '@/components/hero-post';
 import {Intro} from '@/components/intro';
 import {MoreStories} from '@/components/more-stories';
-import {getAllPosts} from '../lib/api';
+import {getAllPosts} from '@/utils/api';
 
-export default function Index() {
+export default function HomePage() {
   const allPosts = getAllPosts();
 
   const heroPost = allPosts[0];

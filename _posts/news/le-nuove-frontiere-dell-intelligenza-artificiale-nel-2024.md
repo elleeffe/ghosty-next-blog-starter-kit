@@ -7,6 +7,7 @@ author:
   name: Nome Autore
   picture: "/assets/blog/20-02-24/author.jpeg"
 ogImage: "/assets/blog/20-02-24/cover.jpg"
+category: "news"
 ---
 
 # Le nuove frontiere dell'Intelligenza Artificiale nel 2024: Applicazioni e Impatti sullo Sviluppo Web
