@@ -4,7 +4,7 @@ excerpt: "Esplora come l'evoluzione dell'Intelligenza Artificiale nel 2024 sta t
 coverImage: "/assets/blog/20-02-24/cover.jpg"
 date: "2024-02-27"
 author:
-  name: Nome Autore
+  name: Lorenzo Faenzi
   picture: "/assets/blog/20-02-24/author.jpeg"
 ogImage: "/assets/blog/20-02-24/cover.jpg"
 category: "news"
