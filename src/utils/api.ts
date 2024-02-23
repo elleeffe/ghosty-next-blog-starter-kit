@@ -1,15 +1,15 @@
 import fs from 'fs';
 import matter from 'gray-matter';
 import {join} from 'path';
-import {categories} from './constants';
+import {categories} from '../config';
 
 const postsDirectory = join(process.cwd(), '_posts');
 
-export function getPostSlugs(): Record<Category, string[]> {
+export function getAllPostsSlugs(lng: Language): Record<Category, string[]> {
   const slugs = categories.reduce<Record<Category, string[]> | undefined>(
     (acc, curr) => {
       try {
-        const posts = fs.readdirSync(postsDirectory + '/' + curr);
+        const posts = fs.readdirSync(`${postsDirectory}/${lng}/${curr}`);
         if (acc === undefined) {
           acc = {
             [curr]: posts,
@@ -20,14 +20,14 @@ export function getPostSlugs(): Record<Category, string[]> {
         return acc;
       } catch (e) {
         console.log(e);
-        throw new Error(`getPostSlugs error. category: ${curr}`);
+        throw new Error(`getAllPostsSlugs error. category: ${curr}`);
       }
     },
     undefined
   );
 
   if (slugs === undefined) {
-    throw new Error(`getPostSlugs error. Can't generate slugs`);
+    throw new Error(`getAllPostsSlugs error. Can't generate slugs`);
   }
 
   return slugs;
@@ -40,12 +40,12 @@ export function getPostBySlug(slug: string): Post {
   return {...data, slug: slug.replace(/.md/g, ''), content} as Post;
 }
 
-export function getAllPosts(): Post[] {
-  const slugs = getPostSlugs();
+export function getAllPosts(lng: Language): Post[] {
+  const slugs = getAllPostsSlugs(lng);
 
   const allPosts = Object.entries(slugs)
     .map(([cat, posts]) =>
-      posts.map((post) => `/${cat}/${post.replace(/.md/g, '')}`)
+      posts.map((post) => `/${lng}/${cat}/${post.replace(/.md/g, '')}`)
     )
     .flat();
 
@@ -57,13 +57,16 @@ export function getAllPosts(): Post[] {
   return posts;
 }
 
-export function getAllPostsByCategory(category: Category): Post[] {
+export function getAllPostsByCategory(
+  lng: Language,
+  category: Category
+): Post[] {
   try {
-    const posts = fs.readdirSync(postsDirectory + '/' + category);
+    const posts = fs.readdirSync(`${postsDirectory}/${lng}/${category}`);
     return (
       posts
         .map((slug) =>
-          getPostBySlug('/' + category + '/' + slug.replace(/.md/g, ''))
+          getPostBySlug(`/${lng}/${category}/${slug.replace(/.md/g, '')}`)
         )
         // sort posts by date in descending order
         .sort((post1, post2) => (post1.date > post2.date ? -1 : 1))

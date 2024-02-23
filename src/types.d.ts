@@ -1,9 +1,11 @@
+type Language = 'it' | 'en';
+
+type Category = 'news';
+
 type Author = {
   name: string;
   picture: string;
 };
-
-type Category = 'news';
 
 type Post = {
   slug: string;

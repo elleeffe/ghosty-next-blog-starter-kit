@@ -4,8 +4,14 @@ import {Intro} from '@/components/intro';
 import {MoreStories} from '@/components/more-stories';
 import {getAllPosts} from '@/utils/api';
 
-export default function HomePage() {
-  const allPosts = getAllPosts();
+type Params = {
+  params: {
+    lang: Language;
+  };
+};
+
+export default function HomePage({params}: Params) {
+  const allPosts = getAllPosts(params.lang);
 
   const heroPost = allPosts[0];
 

@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@radix-ui/themes": "^2.0.3",
+    "accept-language": "^3.0.18",
     "classnames": "^2.5.1",
     "date-fns": "^3.3.1",
     "gray-matter": "^4.0.3",
@@ -17,7 +18,8 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "remark": "^15.0.1",
-    "remark-html": "^16.0.1"
+    "remark-html": "^16.0.1",
+    "sitemap": "^7.1.1"
   },
   "devDependencies": {
     "@improntaadvance/eslint-config": "^0.11.0",
@@ -28,6 +30,7 @@
     "husky": "^9.0.11",
     "postcss": "^8.4.35",
     "tailwindcss": "^3.4.1",
+    "ts-node": "^10.9.2",
     "typescript": "^5.3.3"
   }
 }

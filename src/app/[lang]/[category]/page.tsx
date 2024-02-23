@@ -8,6 +8,7 @@ import {notFound} from 'next/navigation';
 
 type Params = {
   params: {
+    lang: Language;
     category: Category;
   };
 };
@@ -28,7 +29,7 @@ export function generateMetadata({params}: Params): Metadata {
 }
 
 export default function CategoryPage({params}: Params) {
-  const allPosts = getAllPostsByCategory(params.category);
+  const allPosts = getAllPostsByCategory(params.lang, params.category);
 
   if (!allPosts) {
     return notFound();

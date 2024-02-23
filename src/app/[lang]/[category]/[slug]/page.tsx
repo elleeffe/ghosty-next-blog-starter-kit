@@ -9,13 +9,14 @@ import {PostHeader} from '@/components/post-header';
 
 type Params = {
   params: {
+    lang: Language;
     category: Category;
     slug: string;
   };
 };
 
 export function generateMetadata({params}: Params): Metadata {
-  const postSlug = `/${params.category}/${params.slug}`;
+  const postSlug = `/${params.lang}/${params.category}/${params.slug}`;
   const post = getPostBySlug(decodeURIComponent(postSlug));
 
   if (!post) {
@@ -39,7 +40,7 @@ export function generateMetadata({params}: Params): Metadata {
 }
 
 export default async function PostPage({params}: Params) {
-  const postSlug = `/${params.category}/${params.slug}`;
+  const postSlug = `/${params.lang}/${params.category}/${params.slug}`;
   const post = getPostBySlug(decodeURIComponent(postSlug));
 
   if (!post) {
