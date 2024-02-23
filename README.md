@@ -1,63 +1,60 @@
-# A statically generated blog example using Next.js, Markdown, and TypeScript
+![Ghosty Logo](https://github.com/elleeffe/ghosty-next-blog-starter-kit/blob/main/ghosty-logo.webp?raw=true)
 
-This is the existing [blog-starter](https://github.com/vercel/next.js/tree/canary/examples/blog-starter) plus TypeScript.
+# A statically generated blog example using Next.js, Markdown, TypeScript, internationalization, and a pre-commit hook for dynamic sitemap generation.
 
-This example showcases Next.js's [Static Generation](https://nextjs.org/docs/app/building-your-application/routing/pages-and-layouts) feature using Markdown files as the data source.
+This is the existing [blog-starter](https://github.com/vercel/next.js/tree/canary/examples/blog-starter) 
+plus TypeScript, [internationalization](https://nextjs.org/docs/app/building-your-application/routing/internationalization), and [Husky](https://github.com/typicode/husky).
 
-The blog posts are stored in `/_posts` as Markdown files with front matter support. Adding a new Markdown file in there will create a new blog post.
+## Features
+- **Static Generation:** Utilizes Next.js's Static Generation feature with Markdown files as the data source.
+- **Internationalization (i18n):** Supports multiple languages for content localization.
+- **Husky Integration:** Incorporates Husky for pre-commit hook automation (sitemap generation).
 
-To create the blog posts we use [`remark`](https://github.com/remarkjs/remark) and [`remark-html`](https://github.com/remarkjs/remark-html) to convert the Markdown files into an HTML string, and then send it down as a prop to the page. The metadata of every post is handled by [`gray-matter`](https://github.com/jonschlinkert/gray-matter) and also sent in props to the page.
+## Blog Structure
+Blog posts are stored in the `/_posts` directory as Markdown files with front matter support. 
+Each Markdown file represents a blog post. It's crucial to maintain the following folder structure:
 
-## Demo
+The name of each Markdown file becomes the post's path, for example: `title-of-the-post.md`.
 
-[https://next-blog-starter.vercel.app/](https://next-blog-starter.vercel.app/)
+## Important!!!
+- ### Respect the folder structure:
+/_posts/(lang)/(category)/(title-of-the-post).md
+- ### Every post should be present in every category and every category in every language
+- ### If you add a new category or language folder, update Category and Language types in /src/types.d.ts.
+- ### Each Markdown file should contain the following front matter in the header:
+```yaml
+---
+title: "Title of the Post"
+excerpt: "Excerpt of the Post"
+coverImage: "/assets/blog/title-of-the-post/cover.jpg"
+date: "2024-02-27"
+author:
+  name: Author
+  picture: "/assets/blog/title-of-the-post/author.jpeg"
+ogImage: "/assets/blog/title-of-the-post/cover.jpg"
+category: "news"
+---
 
-## Deploy your own
-
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example) or preview live with [StackBlitz](https://stackblitz.com/github/vercel/next.js/tree/canary/examples/blog-starter)
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/vercel/next.js/tree/canary/examples/blog-starter&project-name=blog-starter&repository-name=blog-starter)
-
-### Related examples
-
-- [WordPress](/examples/cms-wordpress)
-- [DatoCMS](/examples/cms-datocms)
-- [Sanity](/examples/cms-sanity)
-- [TakeShape](/examples/cms-takeshape)
-- [Prismic](/examples/cms-prismic)
-- [Contentful](/examples/cms-contentful)
-- [Strapi](/examples/cms-strapi)
-- [Agility CMS](/examples/cms-agilitycms)
-- [Cosmic](/examples/cms-cosmic)
-- [ButterCMS](/examples/cms-buttercms)
-- [Storyblok](/examples/cms-storyblok)
-- [GraphCMS](/examples/cms-graphcms)
-- [Kontent](/examples/cms-kontent)
-- [Umbraco Heartcore](/examples/cms-umbraco-heartcore)
-- [Builder.io](/examples/cms-builder-io)
-- [TinaCMS](/examples/cms-tina/)
-- [Enterspeed](/examples/cms-enterspeed)
-
-## How to use
-
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init), [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/), or [pnpm](https://pnpm.io) to bootstrap the example:
-
-```bash
-npx create-next-app --example blog-starter blog-starter-app
+...include the markdown post content after the front matter.
 ```
 
-```bash
-yarn create next-app --example blog-starter blog-starter-app
+## Pre-Commit Hook
+Upon adding/editing/deleting a Markdown file and attempting to commit changes, Husky triggers an sh script (/backend/pre-commit-sh) that generates a new sitemap in the /public folder and automatically adds it to the commit.
+
+### Now just push and deploy it
+
+## Run project
+```yaml
+pnpm i
 ```
 
-```bash
-pnpm create next-app --example blog-starter blog-starter-app
+then
+
+```yaml
+pnpm run dev
 ```
 
-Your blog should be up and running on [http://localhost:3000](http://localhost:3000)! If it doesn't work, post on [GitHub discussions](https://github.com/vercel/next.js/discussions).
-
-Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
-
-# Notes
-
-`blog-starter` uses [Tailwind CSS](https://tailwindcss.com) [(v3.0)](https://tailwindcss.com/blog/tailwindcss-v3).
+or
+```yaml
+pnpm run build && pnpm run start
+```
