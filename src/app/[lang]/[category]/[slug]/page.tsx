@@ -44,7 +44,7 @@ export default async function PostPage({params}: Params) {
   const post = getPostBySlug(decodeURIComponent(postSlug));
 
   if (!post) {
-    return notFound();
+    notFound();
   }
 
   const content = await markdownToHtml(post.content || '');

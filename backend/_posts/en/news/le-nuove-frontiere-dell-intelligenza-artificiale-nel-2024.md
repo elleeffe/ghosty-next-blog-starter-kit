@@ -1,12 +1,12 @@
 ---
 title: "Le nuove frontiere dell'Intelligenza Artificiale nel 2024: Applicazioni e Impatti sullo Sviluppo Web"
 excerpt: "Esplora come l'evoluzione dell'Intelligenza Artificiale nel 2024 sta trasformando lo sviluppo web, dai framework emergenti agli strumenti AI per migliorare UX e personalizzazione, con un occhio di riguardo per l'etica e la sostenibilità."
-coverImage: "/assets/blog/20-02-24/cover.jpg"
+coverImage: "/assets/blog/news/le-nuove-frontiere-dell-intelligenza-artificiale-nel-2024/cover.jpg"
 date: "2024-02-27"
 author:
-  name: Lorenzo Faenzi
-  picture: "/assets/blog/20-02-24/author.jpeg"
-ogImage: "/assets/blog/20-02-24/cover.jpg"
+  name: Nome Autore
+  picture: "/assets/blog/news/le-nuove-frontiere-dell-intelligenza-artificiale-nel-2024/author.jpeg"
+ogImage: "/assets/blog/news/le-nuove-frontiere-dell-intelligenza-artificiale-nel-2024/cover.jpg"
 category: "news"
 ---
 
@@ -40,7 +40,7 @@ Esaminiamo come aziende leader nel settore tecnologico stanno implementando l'IA
 
 ## Infografiche e Elementi Visivi
 
-![Innovazioni IA nel Web Design 2024](link-alla-immagine-infografica/innovazioni-ia-web-design-2024.jpg)
+![Innovazioni IA nel Web Design 2024]
 
 Questa infografica illustra come l'IA sta influenzando il web design, dall'automazione del codice alla personalizzazione dell'esperienza utente. Gli elementi visivi aiutano a comprendere rapidamente l'impatto dell'IA sullo sviluppo web, evidenziando le principali tendenze e le tecnologie emergenti.
 

@@ -32,7 +32,7 @@ export default function CategoryPage({params}: Params) {
   const allPosts = getAllPostsByCategory(params.lang, params.category);
 
   if (!allPosts) {
-    return notFound();
+    notFound();
   }
 
   if (allPosts.length === 0) {

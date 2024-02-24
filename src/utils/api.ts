@@ -2,8 +2,9 @@ import fs from 'fs';
 import matter from 'gray-matter';
 import {join} from 'path';
 import {categories} from '../config';
+import {notFound} from 'next/navigation';
 
-const postsDirectory = join(process.cwd(), '_posts');
+const postsDirectory = join(process.cwd(), 'backend/_posts');
 
 export function getAllPostsSlugs(lng: Language): Record<Category, string[]> {
   const slugs = categories.reduce<Record<Category, string[]> | undefined>(
@@ -73,6 +74,7 @@ export function getAllPostsByCategory(
     );
   } catch (e) {
     console.log(e);
-    throw new Error(`getAllPostsByCategory error. category: ${category}`);
+    console.log(`getAllPostsByCategory error. category: ${category}`);
+    notFound();
   }
 }
